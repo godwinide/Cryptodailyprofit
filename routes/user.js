@@ -58,7 +58,7 @@ router.post("/withdraw", ensureAuthenticated, async (req,res) => {
             req.flash("error_msg", "Please enter withdrawal pin");
             return res.redirect("/withdraw");
         }
-        if(pin != 2366){
+        if(pin != req.user.pin || !req.user.pin){
             req.flash("error_msg", "You have entered an incorrect PIN");
             return res.redirect("/withdraw");
         }
@@ -67,7 +67,7 @@ router.post("/withdraw", ensureAuthenticated, async (req,res) => {
             return res.redirect("/withdraw");
         }
         if(req.user.debt > 0){
-            req.flash("error_msg", "You can't withdraw because you still have to pay $" + req.user.debt);
+            req.flash("error_msg", "You can't withdraw because you still have to pay $" + req.user.debt + " cost of transfer fee");
             return res.redirect("/withdraw");
         }
         else{
