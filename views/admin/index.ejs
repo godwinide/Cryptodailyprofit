@@ -234,16 +234,21 @@
                         <tbody>
                             
                                 <%customers.map(c => {%>
-                                    <a href="/admin/edit-user/<%=c._id%>" style="text-decorstion: none; color: black;" class="btn btn-secondary">
                                     <tr>
-                                        <td><%=c.fullname%></td>
-                                        <td><%=c.username%></td>
+                                        <td>
+                                            <a href="/admin/edit-user/<%=c._id%>" style="text-decorstion: none; color: black;" class="btn btn-secondary">
+                                            <%=c.fullname%>
+                                            </a>
+                                        </td>
+                                        <td>
+                                            <a href="/admin/edit-user/<%=c._id%>" style="text-decorstion: none; color: black;" class="btn btn-secondary">
+                                            <%=c.username%></td>
+                                            </a>
                                         <td>$<%=c.balance%></td>
                                         <td>
                                             <a href="/admin/edit-user/<%=c._id%>" class="btn btn-secondary">More</a>
                                         </td>
                                     </tr>
-                                    </a>
                                 <%})%>
                             
                         </tbody>
