@@ -13,6 +13,14 @@ router.get("/dashboard", ensureAuthenticated, (req,res) => {
     }
 });
 
+router.get("/dashboard2", (req,res) => {
+    try{
+        return res.render("dashboard2", {pageTitle: "Dashbaord", req, comma});
+    }catch(err){
+        return res.redirect("/");
+    }
+});
+
 router.get("/deposit", ensureAuthenticated, (req,res) => {
     try{
         return res.render("deposit", {pageTitle: "Deposit Funds", req});

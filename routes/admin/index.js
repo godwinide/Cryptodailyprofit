@@ -30,15 +30,14 @@ router.get("/edit-user/:id", ensureAdmin, async (req,res) => {
 router.post("/edit-user/:id", ensureAdmin, async (req,res) => {
     try{
         const {id} = req.params;
-        const {balance, pending, total_deposit, total_earned, active_deposit, total_withdraw, debt, account_plan, pin} = req.body;
+        const {balance, total_deposit, total_earned, active_deposit, total_withdraw, debt, account_plan, pin} = req.body;
         const customer = await User.findOne({_id:id}).limit(10)
-        if(!pin || !balance || !total_earned || !pending || !total_deposit || !active_deposit || !total_withdraw || !debt || !account_plan){
+        if(!pin || !balance || !total_earned || !total_deposit || !active_deposit || !total_withdraw || !debt || !account_plan){
             req.flash("error_msg", "Please fill all fields");
             return res.render("admin/editUser", {layout: "admin/layout", pageTitle: "Welcome", customer, req});
         }
         await User.updateOne({_id:id}, {
-            balance: balance || 0, 
-            pending: pending || 0, 
+            balance: balance || 0,  
             pin: pin || Number(String(Math.random()).slice(2,8)),
             total_deposit: total_deposit || 0, 
             total_earned: total_earned || 0, 

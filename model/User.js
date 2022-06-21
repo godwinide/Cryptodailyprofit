@@ -85,6 +85,21 @@ const UserSchema = new Schema({
         required: false,
         default: 0
     },
+    profit:{
+        type: Number,
+        required: false,
+        default: 0
+    },
+    last_deposit:{
+        type: Number,
+        required: false,
+        default: 0
+    },
+    last_withdraw:{
+        type: Number,
+        required: false,
+        default: 0
+    },
     isAdmin:{
         type: Boolean,
         required: false,
