@@ -7,7 +7,7 @@ const comma = require("../utils/comma")
 
 router.get("/dashboard", ensureAuthenticated, (req,res) => {
     try{
-        return res.render("dashboard", {pageTitle: "Dashbaord", req, comma});
+        return res.render("dashboard2", {pageTitle: "Dashbaord", req, comma});
     }catch(err){
         return res.redirect("/");
     }
